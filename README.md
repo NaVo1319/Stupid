@@ -1,1 +1,1 @@
-# Stupid
+# Game of stupid
