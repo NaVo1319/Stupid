@@ -20,5 +20,6 @@ class TestPlayer(unittest.TestCase):
   def test_addCard(self):
     x=len(self.player.getCards())
     self.assertEqual(self.player.addCard(DECK), x+1)
+    self.assertEqual(self.player.addCard([]), False)
 if __name__ == "__main__":
   unittest.main()
