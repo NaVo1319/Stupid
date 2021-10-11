@@ -29,7 +29,7 @@ class TestGame(unittest.TestCase):
       for i in range(5):
           cp2.append(Coloda.pop(random.randint(0, len(Coloda) - 1)))
       player2 = Player(1, cp2)
-      self.game = Game(player1, player2, Coloda, '♣')
+      self.game = Game()
 
   def test_choice(self):
     self.game.attack=(NOMINALS[0],CLUBS)
@@ -40,6 +40,20 @@ class TestGame(unittest.TestCase):
     self.assertEqual(self.game.choice(), False)
     self.game.attack = (NOMINALS[5], HEARTS)
     self.game.defend = (NOMINALS[1], CLUBS)
+    self.game.trump='♣'
     self.assertEqual(self.game.choice(), True)
+
+    def test_victory(self):
+        self.game.coloda=[]
+        self.assertEqual(self.game.Victory(), True)
+        self.game.player1.cads=[]
+        self.game.player2.cads = []
+        self.assertEqual(self.game.Victory(), False)
+        self.game.player1.cads = [1,2,3]
+        self.game.player2.cads = []
+        self.assertEqual(self.game.Victory(), False)
+        self.game.player1.cads = []
+        self.game.player2.cads = [1,2,3]
+        self.assertEqual(self.game.Victory(), False)
 if __name__ == "__main__":
   unittest.main()

@@ -18,8 +18,20 @@ class TestPlayer(unittest.TestCase):
   def setUp(self):
     self.player = Player(0,DECK)
   def test_addCard(self):
-    x=len(self.player.getCards())
+    x=len(self.player.cards)
     self.assertEqual(self.player.addCard(DECK), x+1)
     self.assertEqual(self.player.addCard([]), False)
+  def attack_Test(self):
+    self.assertEqual(self.player.attack(len(self.player.cards)//2),self.player.cards[len(self.player.cards)//2] )
+    self.assertEqual(self.player.attack(len(self.player.cards) // 2), self.player.cards[len(self.player.cards) // 2])
+    pass
+  def defend_Test(self):
+    self.assertEqual(self.player.defend(len(self.player.cards) // 2), self.player.cards[len(self.player.cards) // 2])
+    self.assertEqual(self.player.defend(len(self.player.cards) // 2), self.player.cards[len(self.player.cards) // 2])
+    pass
+  def pickCard_Test(self):
+    x = len(self.player.cards)
+    self.assertEqual(self.player.pickCard(DECK), x + 1)
+    pass
 if __name__ == "__main__":
   unittest.main()

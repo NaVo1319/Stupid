@@ -3,8 +3,6 @@ class Player:
     def __init__(self, index, cards):
         self.index = index
         self.cards = list(map(tuple, cards))  # убедимся, что будет список кортежей
-    def getCards(self):
-        return self.cards
     def addCard(self,cards):
         if len(cards)==0:
             return False
