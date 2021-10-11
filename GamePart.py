@@ -17,7 +17,7 @@ DECK = [(nom, suit) for nom in NOMINALS for suit in [SPADES, HEARTS, DIAMS, CLUB
 class Game:
     def __init__(self):
         # Раздача карт
-        self.coloda = list(DECK)
+        self.coloda = random.shuffle(list(DECK))
         # Первому игроку
         cp1 = [self.coloda.pop(random.randint(0, len(self.coloda) - 1))]
         for i in range(5):
