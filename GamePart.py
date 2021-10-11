@@ -17,7 +17,10 @@ DECK = [(nom, suit) for nom in NOMINALS for suit in [SPADES, HEARTS, DIAMS, CLUB
 class Game:
     def __init__(self):
         # Раздача карт
-        self.coloda = random.shuffle(list(DECK))
+        coloda=[DECK.pop(random.randint(0, len(DECK) - 1))]
+        for i in range(35):
+            coloda.append(DECK.pop(random.randint(0, len(DECK) - 1)))
+        self.coloda=coloda
         # Первому игроку
         cp1 = [self.coloda.pop(random.randint(0, len(self.coloda) - 1))]
         for i in range(5):
@@ -52,11 +55,13 @@ class Game:
                 x = input()
                 return False
             if len(self.player1.cards) == 0:
-                self.VictoryPlayer='Игрок 1 победил'
+                print('Игрок 1 победил')
+                print("Нажмите любую клавишу....")
                 x = input()
                 return False
             if len(self.player2.cards) == 0:
-                self.VictoryPlayer = 'Игрок 2 победил'
+                print('Игрок 2 победил')
+                print("Нажмите любую клавишу....")
                 x = input()
                 return False
         return True

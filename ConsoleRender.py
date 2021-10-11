@@ -14,3 +14,5 @@ class Render:
         else:
             print(self.game.player2.cards, " <= Твоя колода")
         pass
+    def No(self):
+        print('Это невозможно')
